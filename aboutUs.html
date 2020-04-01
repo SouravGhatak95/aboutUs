@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>GoTestSeries</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+ <style type="text/css">
+ 	body {
+font-family: sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  background-color:  #f3f3f3;
+  margin: 0;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color:#1b1b32;
+   background-image: linear-gradient(
+      115deg,
+      rgba(58, 58, 158, 0.8),
+      rgba(136, 136, 206, 0.7)
+     ),
+     url(https://raw.githubusercontent.com/lasjorg/fcc-form-example-image/master/67103817-7c51e200-f18b-11e9-975f-f74561336a9a-lj.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+.nav-item ul{
+	margin: 0px;
+ 		padding: 0px;
+ 		list-style: none;
+ 		display: flex;
+}
+
+.nav-item ul li{
+	 width: 160px;
+ 		height: 40px;
+ 		line-height: 40px;
+ 		font-size: 20px;
+ 		background: black;
+ 		opacity: 0.8;
+ 		text-decoration: none;
+ 		text-align: center;
+}
+
+.nav-item ul li a{
+         text-decoration: none;
+         color: white;
+         padding: 5px;
+ 	}
+
+ 	.nav-item ul li a:hover{
+ 		background-color: skyblue;
+ 	}
+
+	.container{
+		position: absolute;
+		top: 20px;
+		left: 680px;
+	}
+
+	.details{
+		position: absolute;
+		max-width: 250px;
+		height: 100vh;
+		top: 180px;
+		left: 250px;
+	}
+
+	section h2{
+		position: relative;
+		color: #fff;
+		top: 45px;
+		left: 20px;
+		}
+
+	 i.fa{
+	 	font-size: 15px;
+    position: absolute;
+    left: 160px;
+    top: 99px;
+  }
+
+  #success{
+    color: green;
+    display: none;
+  }
+  #error{
+    color: red;
+    display: none;
+  }
+   #warning{
+    color: orange;
+    display: none;
+  }
+
+  #span1{
+    font-size: 13px;
+    margin-left: 45px;
+    margin-top: 5px;
+    color: red;
+    font-weight: bold;
+    display: none;
+  }
+   #span2{
+    font-size: 13px;
+    margin-left: 45px;
+    margin-top: 5px;
+    color: red;
+    font-weight: bold;
+    display: none;
+  }
+
+	#boton:hover{
+		font-size: 40px;
+		color: blue;
+	}
+
+ </style>
+</head>
+<body onload="fun()">
+	<h1 class="fun1">GoTestSeries</h1> 
+	<div class="container">
+<nav class="nav-item">
+<ul>
+	<li><a href="#aboutus">About Us</a></li>
+	<li><a href="#aboutus">Pricing</a></li>
+	<li><a href="#aboutus">Team Members</a></li>
+</ul>
+</nav>
+</div>
+<div class="suggestion">
+<section>
+	<h2 class="fun2">We would like to hear some suggestions from you to provide you better services</h2>
+	<div class="details">
+		<form action="" method="post">
+			<div class="form-group">
+				<label>Name: </label>
+		<input type="text" name="" id="" class="form-control" required>
+		</div>
+		<div class="form-group">
+				<label id="lbl">Email id: </label>
+				 <i class="fa fa-check" id="success"></i>
+    <i class="fa fa-times" id="error"></i>
+     <i class="fa fa-exclamation" id="warning"></i>
+		<input type="email" name="" id="email" class="form-control">
+		 <span id="span1">Enter a valid email address</span>
+     <span id="span2">This field cannot be empty</span>
+		</div>
+		<div class="form-group">
+				<label>Contact Number: </label>
+		<input type="number" name="" id="" class="form-control" required>
+		</div>
+		<div class="form-group">
+				
+		<textarea name="" class="form-control" placeholder="Your sugestions are valuable to us" required></textarea>
+		</div>
+
+		<button class="btn btn-success" id="boton">Submit</button>
+		
+	</form>
+	</div>
+</section>
+</div>
+
+	<script type="text/javascript">
+
+  $(document).ready(function() {
+  	$('#email').focusout(function() {
+  		email_validate();
+  	});
+
+  	function email_validate() {
+  		var pattern=/^[a-z]+\d+[\W]+[a-z]+[\W]+[a-z]{2,3}$/;
+  		var email=$('#email').val();
+
+  		if (email!=='') {
+  			if (pattern.test(email)) {
+  			$('#lbl').css('color', 'green');
+  			$('#email').css('border', '2px solid green');
+  			$('#success').css('display', 'block');
+  			$('#error').css('display', 'none');
+  			$('#warning').css('display', 'none');
+  			$('#span1').css('display', 'none');
+  			$('#span2').css('display', 'none');
+  		} else {
+  			$('#lbl').css('color', 'orange');
+  			$('#email').css('border', '2px solid orange');
+  			$('#success').css('display', 'none');
+  			$('#error').css('display', 'none');
+  			$('#warning').css('display', 'block');
+  			$('#span1').css('display', 'none');
+  			$('#span2').css('display', 'block');
+  		}
+  	} else{
+  		$('#lbl').css('color', 'red');
+  			$('#email').css('border', '2px solid red');
+  			$('#success').css('display', 'none');
+  			$('#error').css('display', 'block');
+  			$('#warning').css('display', 'none');
+  			$('#span1').css('display', 'block');
+  			$('#span2').css('display', 'none');
+
+  	}
+  	}
+
+  });
+
+  $(document).ready(function() {
+  	$('.fun1').addClass('animated shake');
+  });
+
+  $(document).ready(function() {
+  	$('.fun2').on('mouseover', function() {
+  		$('.fun2').css('color', 'black');
+  	});
+  });
+
+  $(document).ready(function() {
+  	$('.fun2').on('mouseout', function() {
+  		$('.fun2').css('color', 'white');
+  	});
+  });
+
+  function fun(){
+  	alert('Welcome User');
+  }
+
+  window.onbeforeunload=function(){
+  	var close=confirm('Do you wanna leave this Page?');
+  	if (close) {
+  		alert('Thank you for visiting to Us');
+  	} else {
+  		alert('Thank You');
+  	}
+  	return close;
+  }
+   
+	</script>
+</body>
+</html>
